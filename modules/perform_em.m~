@@ -1,0 +1,16 @@
+function c = perform_em(y, K, p, options)
+for n = 1 : options.niter
+    % E-step
+    for k = 1 : K
+        for n = 1 : size(y,1)
+           r = p(k)*mvnpdf(y(n,:), mu_est(k,:), R) 
+        end
+    end
+    
+    % M-step
+    for k = 1 : K
+    end
+    
+end
+end
+
