@@ -1,4 +1,4 @@
-function [mu, R, p, r] = perform_em(y, K, options)
+function [score, gmm] = perform_em(y, K)
 N = size(y,1);
 r = zeros(N,K);
 M = zeros(K,1);
@@ -7,11 +7,12 @@ M = zeros(K,1);
 p = 1/K*ones(K,1);
 mu = rand(K,2);
 R = zeros(2,2,K);  % Random R (covariance)
+
 for k = 1 : K
-    R(:,:,k) = random_cov(2);
+    R(:,:,k) = (rand + 0.5) * eye(2);
 end
 
-for m = 1 : options.niter
+for m = 1 : 50
     % E-step
     for k = 1 : K
         for n = 1 : N
@@ -32,5 +33,10 @@ for m = 1 : options.niter
     end
     
 end
+    gmm.mu = mu;
+    gmm.R = R;
+    gmm.p = p;
+    score = r;
+    [~,gmm.cluster] = max(score,[],2); 
 end
 
