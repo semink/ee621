@@ -1,0 +1,7 @@
+Init_method, dropout, error_rate
+random, 1, 0.066200
+auto_encoder, 1, 0.072100
+dbm, 1, 0.047500
+random, 0, 0.049900
+auto_encoder, 0, 0.061700
+dbm, 0, 0.041300
